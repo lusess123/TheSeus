@@ -1,0 +1,11 @@
+/* Tailwind v4 + Ant Design 6 @layer 分层方案 */
+@layer tailwind-base, antd, tailwind-utilities;
+
+@layer tailwind-base {
+  @import 'tailwindcss/theme' layer(theme);
+  @import 'tailwindcss/preflight' layer(base);
+}
+
+@layer tailwind-utilities {
+  @import 'tailwindcss/utilities' layer(utilities);
+}

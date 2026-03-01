@@ -1,0 +1,10 @@
+name = "theseus-api"
+main = "src/index.ts"
+compatibility_date = "2025-12-01"
+compatibility_flags = ["nodejs_compat"]
+
+[vars]
+API_VERSION = "v1"
+
+# Prisma Postgres 连接 URL（生产环境用 wrangler secret 设置）
+# DATABASE_URL = ""

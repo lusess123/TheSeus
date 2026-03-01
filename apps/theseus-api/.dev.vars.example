@@ -1,0 +1,2 @@
+# Prisma Postgres 连接 URL
+DATABASE_URL="prisma+postgres://accelerate.prisma-data.net/?api_key=your_api_key"
