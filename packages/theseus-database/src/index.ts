@@ -5,5 +5,4 @@
 
 export { createPrisma, type TXPrisma } from './client';
 
-// Re-export Prisma types for repos
 export type { PrismaClient, Prisma } from './generated/prisma';

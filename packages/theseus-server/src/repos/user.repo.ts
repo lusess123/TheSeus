@@ -2,7 +2,7 @@
  * User 表 Repository（防腐层）
  * 方法名与 Prisma 一致，支持 include 类型推断
  */
-import type { PrismaClient, Prisma, TXPrisma } from '../index';
+import type { PrismaClient, Prisma, TXPrisma } from '@theseus/database';
 
 type Ops = Prisma.TypeMap['model']['User']['operations'];
 type Args<Op extends keyof Ops> = Ops[Op]['args'];

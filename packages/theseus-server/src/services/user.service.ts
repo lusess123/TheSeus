@@ -2,7 +2,7 @@
  * User Service — 框架无关的业务逻辑
  */
 import type { AppContext } from '../context';
-import * as UserRepo from '@theseus/database/repos/user.repo';
+import * as UserRepo from '../repos/user.repo';
 
 export async function list(ctx: AppContext) {
   return UserRepo.findMany(ctx.db, { prismaArgs: {} });
