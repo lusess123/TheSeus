@@ -4,7 +4,7 @@
  */
 
 export type { AppContext } from './context';
-export { createContext } from './context';
+export { createContext, getContext, runWithContext } from './context';
 
 // Services
 export * as userService from './services/user.service';

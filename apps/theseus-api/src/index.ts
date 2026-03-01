@@ -4,15 +4,11 @@
  */
 import { Hono } from 'hono';
 import { cors } from 'hono/cors';
-import { createPrisma } from '@theseus/database';
-import { createContext } from '@theseus/server';
+import { createContext, runWithContext } from '@theseus/server';
+import type { HonoEnv } from './env';
 import { v1 } from './routes/v1';
 
-type Bindings = {
-  DATABASE_URL: string;
-};
-
-const app = new Hono<{ Bindings: Bindings }>();
+const app = new Hono<HonoEnv>();
 
 // CORS（不同子域名方案）
 app.use(
@@ -24,12 +20,10 @@ app.use(
   }),
 );
 
-// 注入 AppContext 中间件
+// 注入 AppContext 中间件（Prisma 按需懒加载，只有访问 ctx.db 时才创建）
 app.use('/api/*', async (c, next) => {
-  const prisma = createPrisma(c.env.DATABASE_URL);
-  const ctx = createContext({ db: prisma });
-  c.set('ctx' as never, ctx);
-  await next();
+  const ctx = createContext({ databaseUrl: c.env.DATABASE_URL });
+  await runWithContext(ctx, () => next());
 });
 
 // 挂载 v1 路由
